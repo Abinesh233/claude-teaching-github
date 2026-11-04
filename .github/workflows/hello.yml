@@ -11,7 +11,7 @@ jobs:
       APP_ENV: staging
     steps:
       - name: Show a plain variable
-        run: echo "Environment is $APP_ENV"
+        run: echo "Environment a is $APP_ENV"
 
       - name: Use a secret safely
         env:
