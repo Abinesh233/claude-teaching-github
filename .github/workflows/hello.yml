@@ -1,0 +1,21 @@
+name: Secrets Demo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    env:
+      APP_ENV: staging
+    steps:
+      - name: Show a plain variable
+        run: echo "Environment is $APP_ENV"
+
+      - name: Use a secret safely
+        env:
+          MY_SECRET: ${{ secrets.DEMO_MESSAGE }}
+        run: |
+          echo "Secret length is ${#MY_SECRET}"
+          echo "$MY_SECRET"
