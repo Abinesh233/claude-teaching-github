@@ -1,2 +1,2 @@
-# Hello from both branches
+# Hello fromh both branches
 

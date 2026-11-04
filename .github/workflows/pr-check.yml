@@ -25,4 +25,4 @@ jobs:
             echo "Conflict markers found"
             exit 1
           fi
-          echo "No conflict markers"
+          echo "No conflicts markers"
