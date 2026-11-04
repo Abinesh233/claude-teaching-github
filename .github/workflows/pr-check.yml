@@ -1,0 +1,28 @@
+name: PR Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check README is not empty
+        run: |
+          if [ ! -s README.md ]; then
+            echo "README.md is empty"
+            exit 1
+          fi
+          echo "README.md has content"
+
+      - name: Check for leftover conflict markers
+        run: |
+          if grep -rn "^<<<<<<<\|^=======\|^>>>>>>>" --include="*.md" --include="*.yml" .; then
+            echo "Conflict markers found"
+            exit 1
+          fi
+          echo "No conflict markers"
