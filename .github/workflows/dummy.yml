@@ -1,0 +1,13 @@
+name: Docker Build                  # name shown in the Actions tab
+on:                                 # when this pipeline runs
+  push:                             # every time code is pushed
+    branches: [main]                # only for the main branch
+  pull_request:                     # and when a PR is opened or updated
+jobs:                               # the list of jobs (one job here)
+  build:                            # job name, you choose it
+    runs-on: ubuntu-latest          # the free Linux machine GitHub gives you
+    steps:                          # the steps run in order
+      - name: Checkout code         # label for this step
+        uses: actions/checkout@v4   # ready-made action that downloads your repo
+      - name: Build image           # label for this step
+        run: docker build -t myapp:latest .   # shell command: build from the Dockerfile
